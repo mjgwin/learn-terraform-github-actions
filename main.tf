@@ -48,4 +48,3 @@ resource "aws_lambda_function" "github-actions-test-lambda" {
   runtime = "python3.9"
 
 }
-
