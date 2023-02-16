@@ -17,7 +17,7 @@ terraform {
 }
 
 provider "aws" {
-  region = "us-west-2"
+  region = "us-east-1"
 }
 
 resource "aws_iam_role" "iam_for_lambda" {
@@ -44,8 +44,7 @@ resource "aws_lambda_function" "github-actions-test-lambda" {
   filename      = "lambda_code.zip"
   function_name = "github-actions-test-lambda"
   role          = aws_iam_role.iam_for_lambda.arn
-  handler       = "github_actions_test_lambda.lambda_handler"
-
+  handler       = "lambda_code.github_actions_test_lambda.lambda_handler"
   runtime = "python3.9"
 
 }
