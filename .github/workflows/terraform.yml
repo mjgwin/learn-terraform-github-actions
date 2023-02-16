@@ -15,12 +15,16 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v3
-        
+
       - name: Setup Terraform
         uses: hashicorp/setup-terraform@v1
         with:
           # terraform_version: 0.13.0:
           cli_config_credentials_token: ${{ secrets.TF_API_TOKEN }}
+
+        - name: Zip Lambda
+        run: |
+          zip -r9 lambda_code.zip lambda_code/github_actions_test_lambda.py
 
       - name: Terraform Format
         id: fmt
